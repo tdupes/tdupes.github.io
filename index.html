@@ -6,12 +6,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>dupes.io</title>
+  <title>dupes.dev</title>
   <style>
     @supports (font-variation-settings: normal) {
       html {
         font-family: 'Inter', sans-serif;
       }
+    }
+
+    @font-face {
+      font-family: "GoudyInitialen";
+      src: url("GoudyInitialen.ttf")
+        /* TTF file for CSS3 browsers */
     }
 
     article {
@@ -20,35 +26,36 @@
 
     body {
       font-weight: 300;
-      font-size: 1.3rem;
+      font-size: 2.0rem;
       line-height: 1.4;
-      background: #F0F6DF;
-/*       color: #93a1a1; */
+      background: #fffee4;
+      padding: 0 25%;
+      margin: 0 auto;
     }
-
-/*    a {
-      color: #D1D1E0;
-    }*/
 
     h1,
     h2 {
       font-weight: 700;
-/*       color: #fff; */
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 3rem;
       padding-top: 7vh;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 400;
+      text-align: center;
     }
 
     body {
-      max-width: 960px;
+      max-width: 800px;
       margin: auto;
+    }
+
+    p:first-letter {
+      float: left;
+      font-size: 90px;
+      line-height: 1.1;
+      margin-right: 9px;
+      font-family: "GoudyInitialen";
+      margin-top: 9px;
     }
 
     ul {
@@ -62,21 +69,11 @@
 
 <body>
   <article>
-    <h1 class="title">Hello, I am Thomas DuPlessis.</h1>
-    <h2 class="subtitle">I am a software engineer at <strike>Google</strike>,
-      <strong>Meta<strong>
-    </h2>
-    <!-- <p>I've <a href="https://github.com/tdupes">contributed</a> to the following projects:</p>
-      <section class="content">
-        <ul>
-          <li><a href="https://github.com/facebookincubator/Glean">Glean</a>, Facebook's system for storing and querying facts about code.</li>
-          <li><a href="https://github.com/facebook/pyre-check">Pyre</a>, Facebook's python type checker and language server.</li>
-          <li><a href="https://github.com/emacs-eclim/emacs-eclim"> Emacs-eclim</a>, an emacs extension for eclipse features for java </li>
-        </ul></section>
-<br/> -->
-    <p>You can contact me via <a href="mailto:t@dupes.io">email</a>,
+    <h1 class="title">About</h1>
+    <p>I am Thomas Duplessis. I am a software engineer at <del>Google</del>,
+      <strong>Meta</strong>.<br> Contact me via <a href="mailto:t@dupes.io">email</a>,
       <a href="https://www.linkedin.com/in/thomas-duplessis-2a22277b">linkedin</a>, or
-      <a href="https://github.com/tdupes/">github</a>
+      <a href="https://github.com/tdupes/">github</a>.
     </p>
 
   </article>
