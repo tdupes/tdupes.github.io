@@ -14,6 +14,8 @@
       --border: #a2a9b1;
       --header-text: #222;
       --toggle-bg: #e0ddd5;
+      --ascii: #555;
+      --footer: #999;
     }
 
     [data-theme="dark"] {
@@ -24,6 +26,8 @@
       --border: #444;
       --header-text: #e0e0e0;
       --toggle-bg: #333;
+      --ascii: #777;
+      --footer: #666;
     }
 
     html {
@@ -41,13 +45,43 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      padding-top: 6vh;
-      text-align: center;
-      color: var(--header-text);
+    /* fade-in animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
+    .ascii-header {
+      text-align: center;
+      padding-top: 6vh;
+      padding-bottom: 1rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .ascii-header pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.55rem;
+      line-height: 1.15;
+      color: var(--ascii);
+      margin: 0;
+      display: inline-block;
+      text-align: left;
+    }
+
+    article > h2 {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    article > h2:nth-of-type(1) { animation-delay: 0.15s; }
+    article > h2:nth-of-type(2) { animation-delay: 0.3s; }
+
+    article > p, article > ul {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    article > p:nth-of-type(1) { animation-delay: 0.05s; }
+    article > p:nth-of-type(2) { animation-delay: 0.2s; }
+    article > ul { animation-delay: 0.35s; }
 
     h2 {
       font-size: 1.2em;
@@ -96,13 +130,33 @@
       transition: background 0.3s;
       z-index: 10;
     }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--footer);
+      text-align: center;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
   </style>
 </head>
 
 <body>
   <button class="theme-toggle" aria-label="Toggle dark mode">☀️</button>
+
+  <div class="ascii-header">
+    <pre>
+     _                        _
+  __| |_   _ _ __   ___  ___ | |  __| | _____   __
+ / _` | | | | '_ \ / _ \/ __|| | / _` |/ _ \ \ / /
+| (_| | |_| | |_) |  __/\__ \|_|| (_| |  __/\ V /
+ \__,_|\__,_| .__/ \___||___/(_) \__,_|\___| \_/
+             |_|                                    </pre>
+  </div>
+
   <article>
-    <h1>About</h1>
     <p>I am Thomas Duplessis. I am a software engineer working at Google in the Bay Area.</p>
 
     <h2>Work</h2>
