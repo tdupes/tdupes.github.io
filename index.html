@@ -1,90 +1,141 @@
 <!DOCTYPE html>
-<!-- saved from url=(0016)https://mxxn.io/ -->
-<html>
+<html lang="en" data-theme="light">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>dupes.dev</title>
   <style>
-    @supports (font-variation-settings: normal) {
-      html {
-        font-family: 'Source Serif Pro';
-      }
+    :root {
+      --bg: #fffff8;
+      --text: #333;
+      --link: #355;
+      --link-hover: #1a3a3a;
+      --border: #a2a9b1;
+      --header-text: #222;
+      --toggle-bg: #e0ddd5;
     }
 
-    @font-face {
-      font-family: "GoudyInitialen";
-      src: url("GoudyInitialen.ttf")
-        /* TTF file for CSS3 browsers */
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --text: #d4d4d4;
+      --link: #8ab4b4;
+      --link-hover: #aad4d4;
+      --border: #444;
+      --header-text: #e0e0e0;
+      --toggle-bg: #333;
+    }
+
+    html {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     body {
-      font-weight: 300;
+      max-width: 700px;
       margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
 
     h1 {
+      font-size: 2.4rem;
       font-weight: 700;
-    }
-
-    h1 {
-      font-size: 3rem;
-      padding-top: 7vh;
+      padding-top: 6vh;
       text-align: center;
+      color: var(--header-text);
     }
 
     h2 {
-      font-size: 1.4em;
-      border-bottom: 1px solid #a2a9b1;
+      font-size: 1.2em;
+      font-variant: small-caps;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.2em;
+      color: var(--header-text);
     }
 
-    body {
-      max-width: 900px;
-      font-size: 20px;
-      margin: auto;
+    a {
+      color: var(--link);
+      text-decoration: none;
     }
 
-    p:first-letter {
-      float: left;
-      font-size: 4rem;
-      margin-right: 5px;
-      font-family: "GoudyInitialen";
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
     }
 
     ul {
       margin: 0;
       padding: 0;
-      list-style-position: inside;
-      list-style-type: none
+      list-style: none;
+    }
+
+    li + li {
+      margin-top: 0.3em;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--toggle-bg);
+      border: none;
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      z-index: 10;
     }
   </style>
 </head>
 
 <body>
+  <button class="theme-toggle" aria-label="Toggle dark mode">☀️</button>
   <article>
-    <h1 class="title">About</h1>
-    <p>I am Thomas Duplessis. I am a software engineer working at Meta remotely from Austin, Texas<br><br>
-    </p>
-
+    <h1>About</h1>
+    <p>I am Thomas Duplessis. I am a software engineer working at Google in the Bay Area.</p>
 
     <h2>Work</h2>
-    I am a software engineer at <a href="https://about.meta.com/">Meta</a> working on Dev infrastructure. Previously, I
-    was at <a href="https://about.google/">Google</a> working on <a href="https://www.google.com/maps">Google Maps</a>
-    Infrastructure and then Google's <a href="https://developers.google.com/actions/food-ordering">food ordering
-      service </a>.
+    <p>I am a software engineer at <a href="https://about.google/">Google</a> working on TPU performance. Previously, I
+    was at <a href="https://about.meta.com/">Meta</a> working on Dev infrastructure, and before that at Google working on
+    <a href="https://www.google.com/maps">Google Maps</a> Infrastructure and
+    <a href="https://developers.google.com/actions/food-ordering">food ordering</a>.</p>
 
     <h2>Contact</h2>
     <ul>
-      <li> <a href="mailto:t@dupes.io">email</a></li>
-      <li> <a href="https://www.linkedin.com/in/thomas-duplessis-2a22277b">linkedin</a></li>
-      <li> <a href="https://github.com/tdupes/">github</a></li>
+      <li><a href="mailto:t@dupes.io">email</a></li>
+      <li><a href="https://www.linkedin.com/in/thomas-duplessis-2a22277b">linkedin</a></li>
+      <li><a href="https://github.com/tdupes/">github</a></li>
     </ul>
-
   </article>
 
-
+  <script>
+    const toggle = document.querySelector('.theme-toggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) html.setAttribute('data-theme', saved);
+    function update() {
+      const dark = html.getAttribute('data-theme') === 'dark';
+      toggle.textContent = dark ? '🌙' : '☀️';
+    }
+    update();
+    toggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      update();
+    });
+  </script>
 </body>
 
 </html>
